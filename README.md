@@ -28,6 +28,7 @@ Huffman Text Compressor demonstrates how variable-length, prefix-free codes can 
 - **Code inspection:** Display character frequencies and generated Huffman codes.
 - **Round-trip verification:** Text mode displays the decoded result for comparison.
 - **Deterministic tree ordering:** Frequency ties use the minimum character value as a tie-breaker.
+- **Learning resources:** Concept guide, worked example, tree illustration, archive format notes, and complexity analysis.
 
 ## Visual workflow
 
@@ -74,6 +75,18 @@ java -cp out HuffmanCompressor.HuffmanCompressor
 
 For file operations, enter the requested input and output paths. Keep the input and output paths different.
 
+## Learn the concepts
+
+The documentation includes a worked example using `BANANA`, a visual Huffman tree, an explanation of prefix-free codes, and the project's actual archive layout.
+
+- [Huffman Coding Concepts](docs/HUFFMAN-CODING.md)
+- [Algorithm and .huf File Format](docs/ALGORITHM.md)
+- [Time and Space Complexity](docs/COMPLEXITY.md)
+
+<p align="center">
+  <img src="assets/huffman-example-tree.svg" alt="Worked Huffman tree example for BANANA" width="75%" />
+</p>
+
 ## Run regression checks
 
 The repository includes lightweight Java regression checks for frequency counting, encode/decode round trips, single-character input, and invalid encoded bits.
@@ -101,9 +114,12 @@ HUFFMAN-TEXT-COMPRESSOR/
 │   └── PULL_REQUEST_TEMPLATE.md
 ├── assets/
 │   ├── huffman-banner.svg
-│   └── huffman-workflow.svg
+│   ├── huffman-workflow.svg
+│   └── huffman-example-tree.svg
 ├── docs/
-│   └── ALGORITHM.md
+│   ├── ALGORITHM.md
+│   ├── COMPLEXITY.md
+│   └── HUFFMAN-CODING.md
 ├── src/
 │   └── HuffmanCompressor/
 │       └── HuffmanCompressor.java
@@ -114,12 +130,6 @@ HUFFMAN-TEXT-COMPRESSOR/
 ├── CONTRIBUTING.md
 └── README.md
 ```
-
-## Algorithm and archive format
-
-The compressor counts character frequencies, builds a Huffman tree using a priority queue, generates prefix-free codes, and packs encoded bits into bytes. The `.huf` archive stores a magic number, original character count, unique character count, frequency table, and encoded bit stream.
-
-See [Algorithm and File Format](docs/ALGORITHM.md) for implementation details.
 
 ## Current limitations
 
