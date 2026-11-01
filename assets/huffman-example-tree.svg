@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+  <title id="title">Huffman tree example for BANANA</title>
+  <desc id="desc">A root node branches left with bit zero to character A with frequency three, and right with bit one to an internal node. That node branches to B with frequency one using zero and N with frequency two using one.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#172554"/>
+    </linearGradient>
+    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#0f766e"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="520" rx="28" fill="url(#bg)"/>
+  <text x="52" y="58" fill="#f8fafc" font-family="Arial,sans-serif" font-size="27" font-weight="700">Huffman tree · BANANA</text>
+  <text x="52" y="88" fill="#cbd5e1" font-family="Arial,sans-serif" font-size="16">Frequency: A = 3 · N = 2 · B = 1</text>
+  <g stroke="#94a3b8" stroke-width="4" fill="none" stroke-linecap="round">
+    <path d="M450 155 L260 270"/>
+    <path d="M450 155 L640 270"/>
+    <path d="M640 330 L520 420"/>
+    <path d="M640 330 L760 420"/>
+  </g>
+  <g fill="#fbbf24" font-family="Arial,sans-serif" font-size="18" font-weight="700">
+    <text x="337" y="205">0</text><text x="555" y="205">1</text>
+    <text x="562" y="380">0</text><text x="710" y="380">1</text>
+  </g>
+  <g>
+    <circle cx="450" cy="145" r="42" fill="#334155" stroke="#cbd5e1" stroke-width="3"/>
+    <text x="450" y="153" fill="#fff" text-anchor="middle" font-family="Arial,sans-serif" font-size="23" font-weight="700">6</text>
+    <circle cx="640" cy="300" r="35" fill="#334155" stroke="#cbd5e1" stroke-width="3"/>
+    <text x="640" y="308" fill="#fff" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700">3</text>
+    <rect x="205" y="260" width="110" height="76" rx="16" fill="url(#leaf)" stroke="#99f6e4" stroke-width="2"/>
+    <text x="260" y="290" fill="#fff" text-anchor="middle" font-family="Arial,sans-serif" font-size="23" font-weight="700">A · 3</text>
+    <text x="260" y="317" fill="#dbeafe" text-anchor="middle" font-family="Arial,sans-serif" font-size="15">code: 0</text>
+    <rect x="465" y="410" width="110" height="76" rx="16" fill="url(#leaf)" stroke="#99f6e4" stroke-width="2"/>
+    <text x="520" y="440" fill="#fff" text-anchor="middle" font-family="Arial,sans-serif" font-size="23" font-weight="700">B · 1</text>
+    <text x="520" y="467" fill="#dbeafe" text-anchor="middle" font-family="Arial,sans-serif" font-size="15">code: 10</text>
+    <rect x="705" y="410" width="110" height="76" rx="16" fill="url(#leaf)" stroke="#99f6e4" stroke-width="2"/>
+    <text x="760" y="440" fill="#fff" text-anchor="middle" font-family="Arial,sans-serif" font-size="23" font-weight="700">N · 2</text>
+    <text x="760" y="467" fill="#dbeafe" text-anchor="middle" font-family="Arial,sans-serif" font-size="15">code: 11</text>
+  </g>
+  <text x="52" y="485" fill="#cbd5e1" font-family="Arial,sans-serif" font-size="14">Left edge = 0  ·  Right edge = 1  ·  Leaf path = character code</text>
+</svg>
