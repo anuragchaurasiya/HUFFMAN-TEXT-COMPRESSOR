@@ -1,4 +1,4 @@
-name: Java Build
+name: Java CI
 
 on:
   push:
@@ -6,11 +6,15 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+
 jobs:
-  compile:
-    name: Compile with Java ${{ matrix.java }}
+  build-and-test:
+    name: Build and test (Java ${{ matrix.java }})
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         java: ['11', '17', '21']
 
@@ -24,5 +28,12 @@ jobs:
           distribution: temurin
           java-version: ${{ matrix.java }}
 
-      - name: Compile source
-        run: javac -encoding UTF-8 -d out src/HuffmanCompressor/HuffmanCompressor.java
+      - name: Compile application and regression checks
+        run: |
+          mkdir -p out
+          javac -encoding UTF-8 -d out \
+            src/HuffmanCompressor/HuffmanCompressor.java \
+            test/HuffmanCompressor/HuffmanCompressorTest.java
+
+      - name: Run regression checks
+        run: java -cp out HuffmanCompressor.HuffmanCompressorTest
