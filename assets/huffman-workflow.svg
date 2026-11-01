@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="440" viewBox="0 0 1200 440" role="img" aria-labelledby="t d">
+<title id="t">Huffman compression workflow</title><desc id="d">Input text flows through frequency counting, Huffman tree construction, code generation and bit encoding into a compressed file.</desc>
+<defs><linearGradient id="b" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#08172b"/><stop offset="1" stop-color="#142a4a"/></linearGradient><linearGradient id="c" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#35c6ef"/><stop offset="1" stop-color="#8187ff"/></linearGradient></defs>
+<rect width="1200" height="440" rx="24" fill="url(#b)"/>
+<text x="600" y="55" fill="#f4f8ff" font-family="Arial,sans-serif" font-size="28" font-weight="700" text-anchor="middle">HOW HUFFMAN COMPRESSION WORKS</text>
+<g font-family="Arial,sans-serif" text-anchor="middle">
+<g transform="translate(45 135)"><rect width="210" height="175" rx="18" fill="#102b4b" stroke="#3cbce9" stroke-width="2"/><text x="105" y="55" fill="#75dafa" font-size="18" font-weight="700">01 · INPUT</text><text x="105" y="100" fill="#fff" font-size="23">TEXT</text><text x="105" y="133" fill="#b6c9df" font-size="15">UTF-8 characters</text></g>
+<g transform="translate(285 135)"><rect width="210" height="175" rx="18" fill="#102b4b" stroke="#3cbce9" stroke-width="2"/><text x="105" y="55" fill="#75dafa" font-size="18" font-weight="700">02 · ANALYZE</text><text x="105" y="100" fill="#fff" font-size="23">FREQUENCIES</text><text x="105" y="133" fill="#b6c9df" font-size="15">Count each character</text></g>
+<g transform="translate(525 135)"><rect width="210" height="175" rx="18" fill="#102b4b" stroke="#3cbce9" stroke-width="2"/><text x="105" y="55" fill="#75dafa" font-size="18" font-weight="700">03 · BUILD</text><text x="105" y="100" fill="#fff" font-size="23">HUFFMAN TREE</text><text x="105" y="133" fill="#b6c9df" font-size="15">Combine least frequent</text></g>
+<g transform="translate(765 135)"><rect width="170" height="175" rx="18" fill="#102b4b" stroke="#3cbce9" stroke-width="2"/><text x="85" y="55" fill="#75dafa" font-size="18" font-weight="700">04 · ENCODE</text><text x="85" y="100" fill="#fff" font-size="23">BITS</text><text x="85" y="133" fill="#b6c9df" font-size="15">0 and 1 codes</text></g>
+<g transform="translate(965 135)"><rect width="190" height="175" rx="18" fill="#162c58" stroke="#8a8aff" stroke-width="2"/><text x="95" y="55" fill="#a7a5ff" font-size="18" font-weight="700">05 · SAVE</text><text x="95" y="100" fill="#fff" font-size="23">.HUF FILE</text><text x="95" y="133" fill="#b6c9df" font-size="15">Packed bit stream</text></g>
+</g>
+<g stroke="url(#c)" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M260 222h18m-8-9 9 9-9 9"/><path d="M500 222h18m-8-9 9 9-9 9"/><path d="M740 222h18m-8-9 9 9-9 9"/><path d="M940 222h18m-8-9 9 9-9 9"/></g>
+<text x="600" y="375" fill="#b9cbe0" font-family="Arial,sans-serif" font-size="17" text-anchor="middle">Decompression rebuilds the tree from the stored frequency table and restores the original text.</text>
+<rect x="45" y="410" width="1110" height="3" rx="2" fill="url(#c)" opacity=".8"/>
+</svg>
