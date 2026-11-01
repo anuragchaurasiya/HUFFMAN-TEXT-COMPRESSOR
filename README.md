@@ -1,32 +1,48 @@
 # Huffman Text Compressor
 
 <p align="center">
-  <img src="assets/huffman-banner.svg" alt="Huffman Text Compressor — lossless text compression with Java and Huffman Coding" width="100%" />
+  <img src="assets/huffman-banner.svg" alt="Huffman Text Compressor banner" width="100%" />
 </p>
 
 <p align="center">
-  <strong>Lossless text compression powered by Java and Huffman Coding.</strong>
+  <strong>A menu-driven Java application for lossless text compression using Huffman Coding.</strong>
 </p>
 
-A menu-driven Java application that demonstrates **lossless text compression** using the Huffman Coding algorithm. It can encode text, compress UTF-8 text files into a custom `.huf` format, and restore compressed files.
+<p align="center">
+  <img alt="Java 11+" src="https://img.shields.io/badge/Java-11%2B-orange?logo=openjdk&logoColor=white" />
+  <img alt="Algorithm" src="https://img.shields.io/badge/Algorithm-Huffman%20Coding-2563eb" />
+  <img alt="Compression" src="https://img.shields.io/badge/Compression-Lossless-0f9d58" />
+  <img alt="Build" src="https://img.shields.io/badge/Build-GitHub%20Actions-2088ff?logo=githubactions&logoColor=white" />
+  <img alt="License not selected" src="https://img.shields.io/badge/License-Not%20selected-lightgrey" />
+</p>
+
+## Overview
+
+Huffman Text Compressor demonstrates how variable-length, prefix-free codes can reduce the number of bits needed to represent text. The application supports interactive text encoding, file compression into a custom `.huf` archive, and file decompression.
 
 ## Features
 
-- Compress text entered in the console.
-- Compress a text file into a binary `.huf` file.
-- Decompress a `.huf` file back into a UTF-8 text file.
-- Display character frequencies and generated Huffman codes.
-- Show encoded size and estimated size reduction for text input.
-- Store the frequency table in the compressed file so it can be decoded later.
+- **Text compression:** Enter text and inspect its Huffman bit sequence.
+- **File compression:** Compress UTF-8 text files into a binary `.huf` file.
+- **File decompression:** Restore text from a compatible `.huf` file.
+- **Code inspection:** Display character frequencies and generated Huffman codes.
+- **Round-trip verification:** Text mode displays the decoded result for comparison.
+- **Deterministic tree ordering:** Frequency ties use the minimum character value as a tie-breaker.
+
+## Visual workflow
+
+<p align="center">
+  <img src="assets/huffman-workflow.svg" alt="Diagram showing input, frequency counting, Huffman tree construction, bit encoding and compressed output" width="100%" />
+</p>
 
 ## Requirements
 
-- Java Development Kit (JDK) **11 or newer**
-- A terminal or Java IDE (IntelliJ IDEA, Eclipse, or VS Code with Java support)
+- JDK 11 or newer
+- Terminal or Java IDE (IntelliJ IDEA, Eclipse, or VS Code with Java support)
 
-## Getting started
+## Quick start
 
-### 1. Clone the repository
+### 1. Clone
 
 ```bash
 git clone https://github.com/anuragchaurasiya/HUFFMAN-TEXT-COMPRESSOR.git
@@ -35,9 +51,8 @@ cd HUFFMAN-TEXT-COMPRESSOR
 
 ### 2. Compile
 
-From the repository root:
-
 ```bash
+mkdir -p out
 javac -encoding UTF-8 -d out src/HuffmanCompressor/HuffmanCompressor.java
 ```
 
@@ -47,64 +62,83 @@ javac -encoding UTF-8 -d out src/HuffmanCompressor/HuffmanCompressor.java
 java -cp out HuffmanCompressor.HuffmanCompressor
 ```
 
-## How to use
+## Menu
 
-When the program starts, choose an option from the menu:
-
-| Option | Action |
+| Option | Description |
 | --- | --- |
 | 1 | Compress text entered in the console |
-| 2 | Compress a text file into a `.huf` file |
+| 2 | Compress a UTF-8 text file into a `.huf` file |
 | 3 | Decompress a `.huf` file into a text file |
 | 4 | Display Huffman codes for entered text |
 | 5 | Exit |
 
-For file operations, enter the input and output paths when prompted. Use different paths for the input and output files.
+For file operations, enter the requested input and output paths. Keep the input and output paths different.
 
-> **Note:** Empty text and empty files are not supported by the current implementation. The text-mode size comparison is an estimate and does not include the code table.
+## Run regression checks
 
-## How Huffman Coding works
+The repository includes lightweight Java regression checks for frequency counting, encode/decode round trips, single-character input, and invalid encoded bits.
 
-1. Count how often each character appears.
-2. Insert the characters into a priority queue ordered by frequency.
-3. Repeatedly combine the two lowest-frequency nodes to build a binary Huffman tree.
-4. Assign `0` to left edges and `1` to right edges.
-5. Encode each character using its generated bit sequence.
-6. Decode by walking the same tree according to the stored bits.
+```bash
+mkdir -p out
+javac -encoding UTF-8 -d out \
+  src/HuffmanCompressor/HuffmanCompressor.java \
+  test/HuffmanCompressor/HuffmanCompressorTest.java
+java -cp out HuffmanCompressor.HuffmanCompressorTest
+```
 
-Huffman codes are prefix-free, which allows the encoded stream to be decoded unambiguously.
-
-See [docs/ALGORITHM.md](docs/ALGORITHM.md) for more detail about the implementation and file format.
+GitHub Actions runs the build and regression checks on pushes and pull requests for Java 11, 17, and 21.
 
 ## Project structure
 
 ```text
 HUFFMAN-TEXT-COMPRESSOR/
 ├── .github/
-│   └── workflows/
-│       └── java-ci.yml
+│   ├── ISSUE_TEMPLATE/
+│   │   ├── bug_report.md
+│   │   └── feature_request.md
+│   ├── workflows/
+│   │   └── java-ci.yml
+│   └── PULL_REQUEST_TEMPLATE.md
+├── assets/
+│   ├── huffman-banner.svg
+│   └── huffman-workflow.svg
 ├── docs/
 │   └── ALGORITHM.md
 ├── src/
 │   └── HuffmanCompressor/
 │       └── HuffmanCompressor.java
+├── test/
+│   └── HuffmanCompressor/
+│       └── HuffmanCompressorTest.java
 ├── .gitignore
 ├── CONTRIBUTING.md
 └── README.md
 ```
 
-## Build verification
+## Algorithm and archive format
 
-A GitHub Actions workflow compiles the Java source on pushes and pull requests using supported JDK versions. It checks that the project builds; it does not replace a full automated test suite.
+The compressor counts character frequencies, builds a Huffman tree using a priority queue, generates prefix-free codes, and packs encoded bits into bytes. The `.huf` archive stores a magic number, original character count, unique character count, frequency table, and encoded bit stream.
+
+See [Algorithm and File Format](docs/ALGORITHM.md) for implementation details.
+
+## Current limitations
+
+- Empty text and empty input files are not supported by the current file-compression flow.
+- The implementation operates on Java `char` values (UTF-16 code units); it is not a Unicode code-point implementation.
+- The `.huf` format is specific to this project and is not a standard archive format.
+- Text-mode size reduction is an estimate based on 16 bits per Java character and excludes the code table and file metadata.
+- A compression result may be larger for short or high-entropy input because the archive includes decoding metadata.
 
 ## Contributing
 
-Suggestions and improvements are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
+Bug reports, suggestions, and pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) and use the repository issue templates when reporting problems or proposing improvements.
 
 ## License
 
-No license has been added yet. Until a license is selected, the repository's code is not granted an open-source reuse license.
+No license has been selected yet. Until a license is added, do not assume the code is available for reuse under an open-source license.
 
 ---
 
-**Maintainer:** [@anuragchaurasiya](https://github.com/anuragchaurasiya)
+<p align="center">
+  Maintained by <a href="https://github.com/anuragchaurasiya">@anuragchaurasiya</a>
+</p>
