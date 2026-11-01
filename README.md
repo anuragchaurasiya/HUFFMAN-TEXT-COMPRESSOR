@@ -1,5 +1,13 @@
 # Huffman Text Compressor
 
+<p align="center">
+  <img src="assets/huffman-banner.svg" alt="Huffman Text Compressor — lossless text compression with Java and Huffman Coding" width="100%" />
+</p>
+
+<p align="center">
+  <strong>Lossless text compression powered by Java and Huffman Coding.</strong>
+</p>
+
 A menu-driven Java application that demonstrates **lossless text compression** using the Huffman Coding algorithm. It can encode text, compress UTF-8 text files into a custom `.huf` format, and restore compressed files.
 
 ## Features
