@@ -1,3 +1,4 @@
+// Concepts: regression testing, assertions, edge-case checks, and encode/decode round-trip verification.
 package HuffmanCompressor;
 
 import java.util.HashMap;
