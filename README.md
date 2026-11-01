@@ -20,6 +20,22 @@
 
 Huffman Text Compressor demonstrates how variable-length, prefix-free codes can reduce the number of bits needed to represent text. The application supports interactive text encoding, file compression into a custom `.huf` archive, and file decompression.
 
+## Concepts Used
+
+| Concept | Where it appears | What it demonstrates |
+|---|---|---|
+| Huffman coding | Tree construction and encode/decode methods | Assigning shorter codes to more frequent characters |
+| Greedy algorithm | `buildTree()` | Repeatedly combining the two lowest-frequency nodes |
+| Binary tree | `Node`, `left`, `right` | Representing prefix codes as root-to-leaf paths |
+| Priority queue | `PriorityQueue<Node>` | Efficiently selecting the lowest-priority nodes |
+| Hash maps | Frequency and code maps | Counting characters and storing generated codes |
+| Recursion | `generateCodes()` | Walking the tree to build each character's bit code |
+| Prefix-free encoding | Huffman leaf nodes | Ensuring no character code is a prefix of another |
+| Bit manipulation | `BitWriter`, `BitReader` | Packing and unpacking encoded bits in bytes |
+| Binary file I/O | Data streams and `.huf` archive methods | Writing metadata and compressed bytes |
+| UTF-8 text I/O | `StandardCharsets.UTF_8` | Reading and writing text files with an explicit charset |
+| Validation and round-trip checks | Decode validation and regression tests | Detecting invalid data and checking that decoded text matches the input |
+
 ## Features
 
 - **Text compression:** Enter text and inspect its Huffman bit sequence.
