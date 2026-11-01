@@ -1,0 +1,16 @@
+# Java compiled output
+*.class
+out/
+build/
+
+# Compressed files generated while testing
+*.huf
+
+# IDE settings
+.idea/
+.vscode/
+*.iml
+
+# Operating system files
+.DS_Store
+Thumbs.db
