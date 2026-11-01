@@ -1,3 +1,4 @@
+// Concepts: Huffman greedy coding, binary trees, PriorityQueue, HashMap, recursion, bit I/O, and UTF-8 file handling.
 
 package HuffmanCompressor;
 
